@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+POST     /flight                           controllers.FlightController.createFlight()
+GET      /flights                          controllers.FlightController.getAllFlights()
+
+POST     /country                          controllers.CountryController.createCountry()
+GET      /countries                        controllers.CountryController.getAllCountries()
+GET      /country/:id                      controllers.CountryController.getCountry(id: Long)
+GET      /country/name/:name               controllers.CountryController.getCountryByName(name: String)
+
+POST     /city                             controllers.CityController.createCity()
+GET      /city/:id                         controllers.CityController.getCity(id: Long)
+GET      /city/name/:name                  controllers.CityController.getCityByName(name: String)
+
+GET      /cities                           controllers.CityController.getAllCities()
+
+POST     /airline-service                  controllers.AirlineServiceController.createAirlineService()
+GET      /airline-services                 controllers.AirlineServiceController.getAllAirlineServices()
+
+POST     /city-climate                     controllers.CityClimateController.createCityClimate()
+GET      /city-climates                    controllers.CityClimateController.getAllCityClimates()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
