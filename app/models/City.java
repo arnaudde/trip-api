@@ -2,11 +2,13 @@ package models;
 
 import java.util.*;
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
 import models.Country;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -58,6 +60,7 @@ public class City extends Model {
     @Column(nullable =  false)
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @JsonIdentityReference(alwaysAsId=true)
+    @JsonProperty("country_id")
     public Country country;
 
     @Constraints.Required

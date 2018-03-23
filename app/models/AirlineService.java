@@ -1,8 +1,9 @@
-package models;
+ package models;
 
 import java.util.*;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
@@ -24,6 +25,7 @@ public class AirlineService extends Model {
     @ManyToOne(optional = false)
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @JsonIdentityReference(alwaysAsId=true)
+    @JsonProperty("departure_id")
     @Column(nullable =  false)
     public City departure;
 
@@ -41,6 +43,7 @@ public class AirlineService extends Model {
     @Constraints.Required
     @Transient
     @JsonIgnore
+    @JsonProperty("arrival_id")
     public Long arrival_id;
 
     @Column(nullable=false)
