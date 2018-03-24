@@ -23,6 +23,30 @@ public class Country extends Model {
     @Constraints.Required
     public Float budget;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Float getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Float budget) {
+        this.budget = budget;
+    }
+
     private static Finder<Long, Country> finder = new Finder<>(Country.class);
 
     public static List<Country> findAll() {
