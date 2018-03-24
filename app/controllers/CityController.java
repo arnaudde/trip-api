@@ -42,7 +42,7 @@ public class CityController extends Controller {
             Map<String, Map<String, String>> error = new HashMap();
             Map<String, String> fields = new HashMap();
             fields.put("message", "No city was found for this name");
-            fields.put("name", String.valueOf(name));
+            fields.put("name", name);
             error.put("error", fields);
             return badRequest(toJson(error));
         }
