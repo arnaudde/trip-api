@@ -68,6 +68,86 @@ public class AirlineService extends Model {
     @Constraints.Required
     public Boolean exists;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public City getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(City departure) {
+        this.departure = departure;
+    }
+
+    public Long getDeparture_id() {
+        return departure_id;
+    }
+
+    public void setDeparture_id(Long departure_id) {
+        this.departure_id = departure_id;
+    }
+
+    public City getArrival() {
+        return arrival;
+    }
+
+    public void setArrival(City arrival) {
+        this.arrival = arrival;
+    }
+
+    public Long getArrival_id() {
+        return arrival_id;
+    }
+
+    public void setArrival_id(Long arrival_id) {
+        this.arrival_id = arrival_id;
+    }
+
+    public Integer getMin_departure_time() {
+        return min_departure_time;
+    }
+
+    public void setMin_departure_time(Integer min_departure_time) {
+        this.min_departure_time = min_departure_time;
+    }
+
+    public Integer getMax_departure_time() {
+        return max_departure_time;
+    }
+
+    public void setMax_departure_time(Integer max_departure_time) {
+        this.max_departure_time = max_departure_time;
+    }
+
+    public Integer getMax_duration() {
+        return max_duration;
+    }
+
+    public void setMax_duration(Integer max_duration) {
+        this.max_duration = max_duration;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
+    public Boolean getExists() {
+        return exists;
+    }
+
+    public void setExists(Boolean exists) {
+        this.exists = exists;
+    }
+
     public static List<AirlineService> findAll() {
         Finder<Long, AirlineService> finder = new Finder<>(AirlineService.class);
         return finder.all();
