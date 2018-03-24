@@ -37,13 +37,13 @@ public class AirlineService extends Model {
     @ManyToOne(optional = false)
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @JsonIdentityReference(alwaysAsId=true)
+    @JsonProperty("arrival_id")
     @Column(nullable =  false)
     public City arrival;
 
     @Constraints.Required
     @Transient
     @JsonIgnore
-    @JsonProperty("arrival_id")
     public Long arrival_id;
 
     @Column(nullable=false)
@@ -148,8 +148,27 @@ public class AirlineService extends Model {
         this.exists = exists;
     }
 
+    private static Finder<Long, AirlineService> finder = new Finder<>(AirlineService.class);
+
     public static List<AirlineService> findAll() {
-        Finder<Long, AirlineService> finder = new Finder<>(AirlineService.class);
         return finder.all();
+    }
+
+    public static AirlineService getByParams(
+            Long departure_id,
+            Long arrival_id,
+            Integer month,
+            Integer min_departure_time,
+            Integer max_departure_time,
+            Integer max_duration
+    ) {
+        return finder.query().where()
+                .eq("departure_id", departure_id)
+                .eq("arrival_id", arrival_id)
+                .eq("month", month)
+                .ge("min_departure_time", min_departure_time)
+                .le("max_departure_time", max_departure_time)
+                .le("max_duration", max_duration)
+                .findOne();
     }
 }
