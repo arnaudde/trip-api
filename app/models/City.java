@@ -68,6 +68,94 @@ public class City extends Model {
     @JsonIgnore
     public Long country_id;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAirport_code() {
+        return airport_code;
+    }
+
+    public void setAirport_code(String airport_code) {
+        this.airport_code = airport_code;
+    }
+
+    public Integer getB_code() {
+        return b_code;
+    }
+
+    public void setB_code(Integer b_code) {
+        this.b_code = b_code;
+    }
+
+    public Integer getH_code() {
+        return h_code;
+    }
+
+    public void setH_code(Integer h_code) {
+        this.h_code = h_code;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getB_type() {
+        return b_type;
+    }
+
+    public void setB_type(String b_type) {
+        this.b_type = b_type;
+    }
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Long getCountry_id() {
+        return country_id;
+    }
+
+    public void setCountry_id(Long country_id) {
+        this.country_id = country_id;
+    }
+
     private static Finder<Long, City> finder = new Finder<>(City.class);
 
     public static List<City> findAll() {
