@@ -33,20 +33,17 @@ public class Flight extends Model {
     @Constraints.Required
     public Date date;
 
-    @Column(length = 4, nullable = false)
-    @Constraints.MaxLength(4)
+    @Column(nullable = false)
     @Constraints.Required
-    public String min_departure_time;
+    public Integer min_departure_time;
 
-    @Column(length = 4, nullable = false)
-    @Constraints.MaxLength(4)
+    @Column(nullable = false)
     @Constraints.Required
-    public String max_departure_time;
+    public Integer max_departure_time;
 
-    @Column(length = 4, nullable = false)
-    @Constraints.MaxLength(4)
+    @Column(nullable = false)
     @Constraints.Required
-    public String max_duration;
+    public Integer max_duration;
 
     @Column(nullable=false)
     @Constraints.Required
@@ -88,27 +85,27 @@ public class Flight extends Model {
         this.date = date;
     }
 
-    public String getMin_departure_time() {
+    public Integer getMin_departure_time() {
         return min_departure_time;
     }
 
-    public void setMin_departure_time(String min_departure_time) {
+    public void setMin_departure_time(Integer min_departure_time) {
         this.min_departure_time = min_departure_time;
     }
 
-    public String getMax_departure_time() {
+    public Integer getMax_departure_time() {
         return max_departure_time;
     }
 
-    public void setMax_departure_time(String max_departure_time) {
+    public void setMax_departure_time(Integer max_departure_time) {
         this.max_departure_time = max_departure_time;
     }
 
-    public String getMax_duration() {
+    public Integer getMax_duration() {
         return max_duration;
     }
 
-    public void setMax_duration(String max_duration) {
+    public void setMax_duration(Integer max_duration) {
         this.max_duration = max_duration;
     }
 
@@ -128,9 +125,29 @@ public class Flight extends Model {
         this.created_on = created_on;
     }
 
+    private static Finder<Long, Flight> finder = new Finder<>(Flight.class);
+
     public static List<Flight> findAll() {
-        Finder<Long, Flight> finder = new Finder<>(Flight.class);
         return finder.all();
+    }
+
+    public static Flight getByParams(
+            String departure,
+            String arrival,
+            Date date,
+            Integer min_departure_time,
+            Integer max_departure_time,
+            Integer max_duration
+    ) {
+        return finder.query().where()
+                .eq("departure", departure)
+                .eq("arrival", arrival)
+                .eq("date", date)
+                .ge("min_departure_time", min_departure_time)
+                .le("max_departure_time", max_departure_time)
+                .le("max_duration", max_duration)
+                .orderBy("price asc")
+                .findOne();
     }
 
     public void save() {

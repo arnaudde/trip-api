@@ -4,6 +4,8 @@
 
 # An example controller showing a sample home page
 POST     /flight                           controllers.FlightController.createFlight()
+GET      /flight/:departure/:arrival/:date/:min_departure_time/:max_departure_time/:max_duration controllers.FlightController.getFlightByParams(departure: String ,arrival: String, date: String, min_departure_time: Integer, max_departure_time : Integer, max_duration: Integer)
+
 GET      /flights                          controllers.FlightController.getAllFlights()
 
 POST     /country                          controllers.CountryController.createCountry()
