@@ -4,7 +4,7 @@
 
 # An example controller showing a sample home page
 POST     /flight                           controllers.FlightController.createFlight()
-GET      /flight/:departure/:arrival/:date/:min_departure_time/:max_departure_time/:max_duration controllers.FlightController.getFlightByParams(departure: String ,arrival: String, date: String, min_departure_time: Integer, max_departure_time : Integer, max_duration: Integer)
+GET      /flight/:departure/:arrival/:date/:min_departure_time/:max_departure_time/:max_duration controllers.FlightController.getFlightByParams(departure: String, arrival: String, date: String, min_departure_time: Integer, max_departure_time : Integer, max_duration: Integer)
 
 GET      /flights                          controllers.FlightController.getAllFlights()
 
@@ -20,6 +20,7 @@ GET      /city/name/:name                  controllers.CityController.getCityByN
 GET      /cities                           controllers.CityController.getAllCities()
 
 POST     /airline-service                  controllers.AirlineServiceController.createAirlineService()
+GET      /airline-service/:departure_id/:arrival_id/:month/:min_departure_time/:max_departure_time/:max_duration                 controllers.AirlineServiceController.getAirlineServiceByParams(departure_id: Long, arrival_id: Long, month: Integer,  min_departure_time: Integer, max_departure_time : Integer, max_duration: Integer)
 GET      /airline-services                 controllers.AirlineServiceController.getAllAirlineServices()
 
 POST     /city-climate                     controllers.CityClimateController.createCityClimate()
