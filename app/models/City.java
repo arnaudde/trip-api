@@ -2,6 +2,7 @@ package models;
 
 import java.util.*;
 import javax.persistence.*;
+
 import io.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
@@ -30,11 +31,11 @@ public class City extends Model {
     @Constraints.Required
     public String airport_code;
 
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false, unique = true)
     @Constraints.Required
     public Integer b_code;
 
-    @Column(nullable=false, unique = true)
+    @Column(nullable = false, unique = true)
     @Constraints.Required
     public Integer h_code;
 
@@ -48,18 +49,18 @@ public class City extends Model {
     @Constraints.Required
     public String b_type;
 
-    @Column(nullable =  false)
+    @Column(nullable = false)
     @Constraints.Required
     public Float latitude;
 
-    @Column(nullable =  false)
+    @Column(nullable = false)
     @Constraints.Required
     public Float longitude;
 
     @ManyToOne(optional = false)
-    @Column(nullable =  false)
-    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-    @JsonIdentityReference(alwaysAsId=true)
+    @Column(nullable = false)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @JsonProperty("country_id")
     public Country country;
 

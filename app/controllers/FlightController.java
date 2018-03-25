@@ -4,13 +4,17 @@ import models.Flight;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
+
 import java.util.Map;
 import java.util.HashMap;
 import javax.inject.Inject;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+
 import static play.libs.Json.toJson;
+
 import java.text.ParseException;
+
 public class FlightController extends Controller {
 
     @Inject
@@ -60,8 +64,7 @@ public class FlightController extends Controller {
                 error.put("error", fields);
                 return badRequest(toJson(error));
             }
-        }
-        catch (ParseException e){
+        } catch (ParseException e) {
             return badRequest("Date is not valid");
         }
     }

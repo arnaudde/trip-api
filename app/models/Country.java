@@ -19,7 +19,7 @@ public class Country extends Model {
     @Constraints.Required
     public String name;
 
-    @Column(nullable =  false)
+    @Column(nullable = false)
     @Constraints.Required
     public Float budget;
 

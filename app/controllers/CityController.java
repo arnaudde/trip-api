@@ -6,7 +6,9 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.Constraints;
 import play.mvc.*;
+
 import static play.libs.F.Tuple;
+
 import javax.inject.Inject;
 import java.util.Map;
 import java.util.HashMap;
@@ -15,7 +17,8 @@ import static play.libs.Json.toJson;
 
 public class CityController extends Controller {
 
-    @Inject FormFactory formFactory;
+    @Inject
+    FormFactory formFactory;
 
     public Result getAllCities() {
         return ok(toJson(City.findAll()));
@@ -34,6 +37,7 @@ public class CityController extends Controller {
             return badRequest(toJson(error));
         }
     }
+
     public Result getCityByName(String name) {
         City city = City.findByName(name);
         if (city != null) {
@@ -52,8 +56,7 @@ public class CityController extends Controller {
         Form<City> form = formFactory.form(City.class).bindFromRequest();
         if (form.hasErrors()) {
             return badRequest(form.errorsAsJson());
-        }
-        else {
+        } else {
             City City = form.get();
             City.country = Country.find(City.country_id);
             City.save();

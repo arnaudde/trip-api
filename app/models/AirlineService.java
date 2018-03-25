@@ -1,7 +1,8 @@
- package models;
+package models;
 
 import java.util.*;
 import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.ebean.*;
@@ -12,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Table(
-        uniqueConstraints=
-        @UniqueConstraint(columnNames={"departure_id", "arrival_id", "month", "min_departure_time", "max_departure_time", "max_duration"})
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"departure_id", "arrival_id", "month", "min_departure_time", "max_departure_time", "max_duration"})
 )
 @Entity
 public class AirlineService extends Model {
@@ -23,10 +24,10 @@ public class AirlineService extends Model {
     public Long id;
 
     @ManyToOne(optional = false)
-    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-    @JsonIdentityReference(alwaysAsId=true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @JsonProperty("departure_id")
-    @Column(nullable =  false)
+    @Column(nullable = false)
     public City departure;
 
     @Constraints.Required
@@ -35,10 +36,10 @@ public class AirlineService extends Model {
     public Long departure_id;
 
     @ManyToOne(optional = false)
-    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
-    @JsonIdentityReference(alwaysAsId=true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @JsonProperty("arrival_id")
-    @Column(nullable =  false)
+    @Column(nullable = false)
     public City arrival;
 
     @Constraints.Required
@@ -46,30 +47,30 @@ public class AirlineService extends Model {
     @JsonIgnore
     public Long arrival_id;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Constraints.Required
     @Constraints.Min(0)
     @Constraints.Max(2400)
     public Integer min_departure_time;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Constraints.Required
     @Constraints.Min(0)
     @Constraints.Max(2400)
     public Integer max_departure_time;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Constraints.Required
     @Constraints.Min(0)
     public Integer max_duration;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Constraints.Min(1)
     @Constraints.Max(12)
     @Constraints.Required
     public Integer month;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Constraints.Required
     public Boolean exists;
 

@@ -8,8 +8,8 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Table(
-  uniqueConstraints=
-  @UniqueConstraint(columnNames={"departure", "arrival", "date", "min_departure_time", "max_departure_time", "max_duration"})
+        uniqueConstraints =
+        @UniqueConstraint(columnNames = {"departure", "arrival", "date", "min_departure_time", "max_departure_time", "max_duration"})
 )
 @Entity
 public class Flight extends Model {
@@ -50,7 +50,7 @@ public class Flight extends Model {
     @Constraints.Min(0)
     public Integer max_duration;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Constraints.Required
     public Integer price;
 

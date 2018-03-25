@@ -6,7 +6,9 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.Constraints;
 import play.mvc.*;
+
 import static play.libs.F.Tuple;
+
 import javax.inject.Inject;
 import java.util.Map;
 import java.util.HashMap;
@@ -15,7 +17,8 @@ import static play.libs.Json.toJson;
 
 public class AirlineServiceController extends Controller {
 
-    @Inject FormFactory formFactory;
+    @Inject
+    FormFactory formFactory;
 
     public Result getAllAirlineServices() {
         return ok(toJson(AirlineService.findAll()));
@@ -25,8 +28,7 @@ public class AirlineServiceController extends Controller {
         Form<AirlineService> form = formFactory.form(AirlineService.class).bindFromRequest();
         if (form.hasErrors()) {
             return badRequest(form.errorsAsJson());
-        }
-        else {
+        } else {
             AirlineService airlineService = form.get();
             airlineService.departure = City.find(airlineService.departure_id);
             airlineService.arrival = City.find(airlineService.arrival_id);
@@ -36,11 +38,11 @@ public class AirlineServiceController extends Controller {
     }
 
     public Result getAirlineServiceByParams(Long departure_id,
-                                    Long arrival_id,
-                                    Integer month,
-                                    Integer min_departure_time,
-                                    Integer max_departure_time,
-                                    Integer max_duration) {
+                                            Long arrival_id,
+                                            Integer month,
+                                            Integer min_departure_time,
+                                            Integer max_departure_time,
+                                            Integer max_duration) {
         AirlineService airlineService = AirlineService.getByParams(departure_id,
                 arrival_id,
                 month,
