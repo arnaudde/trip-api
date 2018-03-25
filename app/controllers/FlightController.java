@@ -30,7 +30,7 @@ public class FlightController extends Controller {
             return badRequest(form.errorsAsJson());
         } else {
             Flight flight = form.get();
-            flight.save();
+            flight.replace();
             return ok(toJson(flight));
         }
     }

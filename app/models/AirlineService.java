@@ -154,6 +154,21 @@ public class AirlineService extends Model {
         this.exists = exists;
     }
 
+    public void replace() {
+        try {
+            this.save();
+        } catch (DuplicateKeyException e) {
+            AirlineService airlineService = this.getByParams(this.departure_id,
+                    this.arrival_id,
+                    this.month,
+                    this.min_departure_time,
+                    this.max_departure_time,
+                    this.max_duration);
+            airlineService.setExists(this.exists);
+            airlineService.update();
+        }
+    }
+
     private static Finder<Long, AirlineService> finder = new Finder<>(AirlineService.class);
 
     public static List<AirlineService> findAll() {

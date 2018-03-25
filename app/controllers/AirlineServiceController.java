@@ -32,7 +32,7 @@ public class AirlineServiceController extends Controller {
             AirlineService airlineService = form.get();
             airlineService.departure = City.find(airlineService.departure_id);
             airlineService.arrival = City.find(airlineService.arrival_id);
-            airlineService.save();
+            airlineService.replace();
             return ok(toJson(airlineService));
         }
     }

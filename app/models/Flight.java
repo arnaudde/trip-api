@@ -6,7 +6,7 @@ import javax.persistence.*;
 import io.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
-
+import io.ebean.DuplicateKeyException;
 @Table(
         uniqueConstraints =
         @UniqueConstraint(columnNames = {"departure", "arrival", "date", "min_departure_time", "max_departure_time", "max_duration"})
@@ -152,7 +152,23 @@ public class Flight extends Model {
                 .le("max_departure_time", max_departure_time)
                 .le("max_duration", max_duration)
                 .orderBy("price asc")
+                .setMaxRows(1)
                 .findOne();
+    }
+
+    public void replace() {
+        try {
+            this.save();
+        } catch (DuplicateKeyException e) {
+            Flight flight = this.getByParams(this.departure,
+                    this.arrival,
+                    this.date,
+                    this.min_departure_time,
+                    this.max_departure_time,
+                    this.max_duration);
+            flight.setPrice(this.price);
+            flight.update();
+        }
     }
 
     public void save() {
