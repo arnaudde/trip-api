@@ -48,14 +48,19 @@ public class AirlineService extends Model {
 
     @Column(nullable=false)
     @Constraints.Required
+    @Constraints.Min(0)
+    @Constraints.Max(2400)
     public Integer min_departure_time;
 
     @Column(nullable=false)
     @Constraints.Required
+    @Constraints.Min(0)
+    @Constraints.Max(2400)
     public Integer max_departure_time;
 
     @Column(nullable=false)
     @Constraints.Required
+    @Constraints.Min(0)
     public Integer max_duration;
 
     @Column(nullable=false)
