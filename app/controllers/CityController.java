@@ -1,5 +1,6 @@
 package controllers;
 
+import io.ebean.Ebean;
 import models.City;
 import models.Country;
 import play.data.Form;
@@ -57,11 +58,45 @@ public class CityController extends Controller {
         if (form.hasErrors()) {
             return badRequest(form.errorsAsJson());
         } else {
-            City City = form.get();
-            City.country = Country.find(City.country_id);
-            City.save();
-            return ok(toJson(City));
+            City city = form.get();
+            city.country = Country.find(city.country_id);
+            city.save();
+            return ok(toJson(city));
         }
     }
 
+    public Result updateCity(Long id) {
+      Form<City> form = formFactory.form(City.class).bindFromRequest();
+      if (form.hasErrors()) {
+        return badRequest(form.errorsAsJson());
+      } else {
+        City city = City.find(id);
+        if (city == null)
+        {
+          Map<String, Map<String, String>> error = new HashMap();
+          Map<String, String> fields = new HashMap();
+          fields.put("message", "Could not update, no city was found for this id");
+          fields.put("id", String.valueOf(id));
+          error.put("error", fields);
+          return badRequest(toJson(error));
+        } else {
+          City newCity = form.get();
+          Country country = Country.find(newCity.country_id);
+          if (country == null) {
+            Map<String, Map<String, String>> error = new HashMap();
+            Map<String, String> fields = new HashMap();
+            fields.put("message", "Could not update, no city was found for this country");
+            fields.put("country", String.valueOf(newCity.country_id));
+            error.put("error", fields);
+            return badRequest(toJson(error));
+          }
+          else {
+            newCity.setCountry(country);
+            newCity.setId(id);
+            newCity.update();
+            return ok(toJson(newCity));
+          }
+        }
+      }
+    }
 }

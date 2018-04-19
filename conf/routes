@@ -16,6 +16,7 @@ GET      /country/name/:name               controllers.CountryController.getCoun
 POST     /city                             controllers.CityController.createCity()
 GET      /city/:id                         controllers.CityController.getCity(id: Long)
 GET      /city/name/:name                  controllers.CityController.getCityByName(name: String)
+PUT      /city/:id                         controllers.CityController.updateCity(id: Long)
 
 GET      /cities                           controllers.CityController.getAllCities()
 
