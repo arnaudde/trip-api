@@ -27,35 +27,35 @@ public class City extends Model {
     public String name;
 
     @Column(length = 3, nullable = false, unique = true)
-    @Constraints.MaxLength(3)
+    @Constraints.MaxLength(10)
     @Constraints.Required
-    public String airport_code;
+    private String airport_code;
 
     @Column(nullable = false, unique = true)
     @Constraints.Required
-    public Integer b_code;
+    private Integer b_code;
 
     @Column(nullable = false, unique = true)
     @Constraints.Required
-    public Integer h_code;
+    private Integer h_code;
 
     @Column(length = 250, nullable = false)
     @Constraints.MaxLength(250)
     @Constraints.Required
-    public String type;
+    private String type;
 
     @Column(length = 250, nullable = false)
     @Constraints.MaxLength(250)
     @Constraints.Required
-    public String b_type;
+    private String b_type;
 
     @Column(nullable = false)
     @Constraints.Required
-    public Float latitude;
+    private Float latitude;
 
     @Column(nullable = false)
     @Constraints.Required
-    public Float longitude;
+    private Float longitude;
 
     @ManyToOne(optional = false)
     @Column(nullable = false)
