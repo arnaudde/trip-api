@@ -26,5 +26,8 @@ GET      /airline-services                 controllers.AirlineServiceController.
 POST     /city-climate                     controllers.CityClimateController.createCityClimate()
 GET      /city-climates                    controllers.CityClimateController.getAllCityClimates()
 
+GET      /trip                            controllers.TripController.getTrip(departureName: String, secondDepartureName: String ?= null, arrivalName: String, departureDate: String, returnDate: String, minDepartureTime: Integer ?= 0, maxDepartureTime: Integer ?= 2400, maxDuration: Integer ?= 300)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
