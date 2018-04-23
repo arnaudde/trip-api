@@ -18,13 +18,13 @@ public class Flight extends Model {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long id;
 
-    @Column(length = 3, nullable = false)
-    @Constraints.MaxLength(3)
+    @Column(length = 10, nullable = false)
+    @Constraints.MaxLength(10)
     @Constraints.Required
     public String departure;
 
-    @Column(length = 3, nullable = false)
-    @Constraints.MaxLength(3)
+    @Column(length = 10, nullable = false)
+    @Constraints.MaxLength(10)
     @Constraints.Required
     public String arrival;
 
