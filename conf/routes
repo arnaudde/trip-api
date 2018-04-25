@@ -2,7 +2,6 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
 POST     /flight                           controllers.FlightController.createFlight()
 GET      /flight/:departure/:arrival/:date/:min_departure_time/:max_departure_time/:max_duration controllers.FlightController.getFlightByParams(departure: String, arrival: String, date: String, min_departure_time: Integer, max_departure_time : Integer, max_duration: Integer)
 
@@ -27,7 +26,7 @@ GET      /airline-services                 controllers.AirlineServiceController.
 POST     /city-climate                     controllers.CityClimateController.createCityClimate()
 GET      /city-climates                    controllers.CityClimateController.getAllCityClimates()
 
-GET      /trip                            controllers.TripController.getTrip(departureName: String, secondDepartureName: String ?= null, arrivalName: String, departureDate: String, returnDate: String, minDepartureTime: Integer ?= 0, maxDepartureTime: Integer ?= 2400, maxDuration: Integer ?= 300)
+GET      /trip                             controllers.TripController.getTrip(departureName: String, secondDepartureName: String ?= null, arrivalName: String, departureDate: String, returnDate: String, minDepartureTime: Integer ?= 0, maxDepartureTime: Integer ?= 2400, minDepartureTimeReturn: Integer ?= 0,  maxDepartureTimeReturn: Integer ?= 2400, minSecondDepartureTime: Integer ?= 0, maxSecondDepartureTime: Integer ?= 2400, minSecondDepartureTimeReturn: Integer ?= 0, maxSecondDepartureTimeReturn: Integer ?= 2400, maxDuration: Integer ?= 300)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
