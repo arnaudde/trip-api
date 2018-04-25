@@ -60,6 +60,11 @@ public class TripController extends Controller {
         error_fields.put("message", "No flight was found for the first departure");
         error_fields.put("departure", departureName);
         error_fields.put("arrival", arrivalName);
+        error_fields.put("minDepartureTime", String.valueOf(minDepartureTime));
+        error_fields.put("maxDepartureTime", String.valueOf(maxDepartureTime));
+        error_fields.put("minDepartureTimeReturn", String.valueOf(minDepartureTimeReturn));
+        error_fields.put("maxDepartureTimeReturn", String.valueOf(maxDepartureTimeReturn));
+        error_fields.put("maxDuration", String.valueOf(maxDuration));
         response.put("error", error_fields);
         return ok(toJson(response));
       }
@@ -92,8 +97,13 @@ public class TripController extends Controller {
           Map<String, Map<String, String>> response = new HashMap();
           Map<String, String> error_fields = new HashMap();
           error_fields.put("message", "No flight was found for the second departure");
-          error_fields.put("depature", secondDepartureName);
+          error_fields.put("secondDepature", secondDepartureName);
           error_fields.put("arrival", arrivalName);
+          error_fields.put("minSecondDepartureTime", String.valueOf(minSecondDepartureTime));
+          error_fields.put("maxSecondDepartureTime", String.valueOf(maxSecondDepartureTime));
+          error_fields.put("minSecondDepartureTimeReturn", String.valueOf(minSecondDepartureTimeReturn));
+          error_fields.put("maxSecondDepartureTimeReturn", String.valueOf(maxSecondDepartureTimeReturn));
+          error_fields.put("maxDuration", String.valueOf(maxDuration));
           response.put("error", error_fields);
           return ok(toJson(response));
         }
