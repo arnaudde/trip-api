@@ -13,8 +13,21 @@ import static play.libs.Json.toJson;
 
 public class TripController extends Controller {
 
-  public Result getTrip(String departureName, String secondDepartureName, String arrivalName, String departureDate,
-      String returnDate, Integer minDepartureTime, Integer maxDepartureTime, Integer maxDuration) {
+  public Result getTrip(
+      String departureName,
+      String secondDepartureName,
+      String arrivalName,
+      String departureDate,
+      String returnDate,
+      Integer minDepartureTime,
+      Integer maxDepartureTime,
+      Integer minDepartureTimeReturn,
+      Integer maxDepartureTimeReturn,
+      Integer minSecondDepartureTime,
+      Integer maxSecondDepartureTime,
+      Integer minSecondDepartureTimeReturn,
+      Integer maxSecondDepartureTimeReturn,
+      Integer maxDuration) {
     City departure = City.findByName(departureName);
     City arrival = City.findByName(arrivalName);
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -34,8 +47,8 @@ public class TripController extends Controller {
           arrival.getAirport_code(),
           departure.getAirport_code(),
           end,
-          minDepartureTime,
-          maxDepartureTime,
+          minDepartureTimeReturn,
+          maxDepartureTimeReturn,
           maxDuration
       );
 
@@ -61,8 +74,8 @@ public class TripController extends Controller {
             secondDeparture.getAirport_code(),
             arrival.getAirport_code(),
             start,
-            minDepartureTime,
-            maxDepartureTime,
+            minSecondDepartureTime,
+            maxSecondDepartureTime,
             maxDuration
         );
 
@@ -70,8 +83,8 @@ public class TripController extends Controller {
             arrival.getAirport_code(),
             secondDeparture.getAirport_code(),
             end,
-            minDepartureTime,
-            maxDepartureTime,
+            minSecondDepartureTimeReturn,
+            maxSecondDepartureTimeReturn,
             maxDuration
         );
 
