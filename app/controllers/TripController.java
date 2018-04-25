@@ -14,13 +14,13 @@ import static play.libs.Json.toJson;
 public class TripController extends Controller {
 
   public Result getTrip(String departureName, String secondDepartureName, String arrivalName, String departureDate,
-      String returnlDate, Integer minDepartureTime, Integer maxDepartureTime, Integer maxDuration) {
+      String returnDate, Integer minDepartureTime, Integer maxDepartureTime, Integer maxDuration) {
     City departure = City.findByName(departureName);
     City arrival = City.findByName(arrivalName);
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     try {
       Date start = dateFormat.parse(departureDate);
-      Date end = dateFormat.parse(returnlDate);
+      Date end = dateFormat.parse(returnDate);
       Flight outboundFlight = Flight.getByParams(
           departure.getAirport_code(),
           arrival.getAirport_code(),
@@ -31,13 +31,16 @@ public class TripController extends Controller {
       );
 
       Flight inboundFlight = Flight.getByParams(
-          departure.getAirport_code(),
           arrival.getAirport_code(),
+          departure.getAirport_code(),
           end,
           minDepartureTime,
           maxDepartureTime,
           maxDuration
       );
+
+
+
       if (inboundFlight == null || outboundFlight == null) {
         Map<String, Map<String, String>> response = new HashMap();
         Map<String, String> error_fields = new HashMap();
@@ -53,6 +56,7 @@ public class TripController extends Controller {
 
       if (secondDepartureName != null) {
         City secondDeparture = City.findByName(secondDepartureName);
+
         Flight secondOutboundFlight = Flight.getByParams(
             secondDeparture.getAirport_code(),
             arrival.getAirport_code(),
@@ -61,14 +65,16 @@ public class TripController extends Controller {
             maxDepartureTime,
             maxDuration
         );
+
         Flight secondInboundFlight = Flight.getByParams(
-            departure.getAirport_code(),
             arrival.getAirport_code(),
+            secondDeparture.getAirport_code(),
             end,
             minDepartureTime,
             maxDepartureTime,
             maxDuration
         );
+
         if (secondInboundFlight == null || secondOutboundFlight == null) {
           Map<String, Map<String, String>> response = new HashMap();
           Map<String, String> error_fields = new HashMap();
