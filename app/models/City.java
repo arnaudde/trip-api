@@ -26,7 +26,7 @@ public class City extends Model {
     @Constraints.Required
     public String name;
 
-    @Column(length = 3, nullable = false, unique = true)
+    @Column(length = 10, nullable = false, unique = true)
     @Constraints.MaxLength(10)
     @Constraints.Required
     private String airport_code;
