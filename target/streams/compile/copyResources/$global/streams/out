@@ -1,7 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/user/tripapi/conf/logback.xml,/Users/user/tripapi/target/scala-2.12/classes/logback.xml)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/user/tripapi/conf/application.conf,/Users/user/tripapi/target/scala-2.12/classes/application.conf)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/user/tripapi/conf/evolutions,/Users/user/tripapi/target/scala-2.12/classes/evolutions)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/user/tripapi/conf/routes,/Users/user/tripapi/target/scala-2.12/classes/routes)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/user/tripapi/conf/evolutions/default,/Users/user/tripapi/target/scala-2.12/classes/evolutions/default)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/user/tripapi/conf/evolutions/default/1.sql,/Users/user/tripapi/target/scala-2.12/classes/evolutions/default/1.sql)[0m
